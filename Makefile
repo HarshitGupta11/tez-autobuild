@@ -11,7 +11,7 @@ TEZ_VERSION=0.10.0
 TEZ_BRANCH=branch-0.10.0
 HIVE_VERSION=4.0.0-SNAPSHOT
 HIVE_BRANCH=master
-ORC_VERSION=1.7.0-SNAPSHOT
+ORC_VERSION=1.6.7
 ORC_BRANCH=main
 GUAVA_VERSION=19.0
 MAVEN_VERSION=3.8.1
@@ -116,13 +116,13 @@ hive: tez-dist.tar.gz
 	fi
 	export PATH=$(INSTALL_ROOT)/protoc/bin:$(INSTALL_ROOT)/maven/bin/:$(INSTALL_ROOT)/ant/bin:$$PATH; \
 	cd hive/; . /etc/profile; \
-	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdir -Pdist -Dhadoop.version=$(HADOOP_VERSION) -Dmaven.javadoc.skip=true -Dpackaging.minimizeJar=$(MINIMIZE) $$($(OFFLINE) && echo "-o"); 
+	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdist -Dhadoop.version=$(HADOOP_VERSION) -Dmaven.javadoc.skip=true $$($(OFFLINE) && echo "-o"); 
 
-orc-java: git maven protobuf
-	test -d orc || git clone --branch $(ORC_BRANCH) https://github.com/apache/orc.git orc
-	export PATH=$(INSTALL_ROOT)/protoc/bin:$(INSTALL_ROOT)/maven/bin/:$$PATH; \
-	cd orc/java; . /etc/profile; \
-	$(MVN2) $(CLEAN) install -DskipTests $$($(OFFLINE) && echo "-o");
+# orc-java: git maven protobuf
+# 	test -d orc || git clone --branch $(ORC_BRANCH) https://github.com/apache/orc.git orc
+# 	export PATH=$(INSTALL_ROOT)/protoc/bin:$(INSTALL_ROOT)/maven/bin/:$$PATH; \
+# 	cd orc/java; . /etc/profile; \
+# 	$(MVN2) $(CLEAN) install -DskipTests $$($(OFFLINE) && echo "-o");
 
 dist-tez: tez 
 	cp tez/tez-dist/target/tez-$(TEZ_VERSION).tar.gz tez-dist.tar.gz
