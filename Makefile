@@ -116,9 +116,6 @@ hive: tez-dist.tar.gz
 	cd hive/; . /etc/profile; \
 	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdir -Pdist -Phadoop-2 -Dhadoop.version=$(HADOOP_VERSION) -Dhadoop-0.23.version=$(HADOOP_VERSION) -Dmaven.javadoc.skip=true -Dbuild.profile=nohcat -Dpackaging.minimizeJar=$(MINIMIZE) $$($(OFFLINE) && echo "-o"); 
 
-clean-hive:
-	rm -rf hive
-
 orc-java: git maven protobuf
 	test -d orc || git clone --branch $(ORC_BRANCH) https://github.com/apache/orc.git orc
 	export PATH=$(INSTALL_ROOT)/protoc/bin:$(INSTALL_ROOT)/maven/bin/:$$PATH; \
