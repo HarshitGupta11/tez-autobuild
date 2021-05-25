@@ -7,20 +7,20 @@ HADOOP:=$(shell which hadoop)
 MVN:=unset M2_HOME; ../dist/maven/bin/mvn
 MVN2:=unset M2_HOME; ../../dist/maven/bin/mvn
 TOOLS=git gcc #cmake pdsh
-TEZ_VERSION=0.10.1-SNAPSHOT
-TEZ_BRANCH=master
-HIVE_VERSION=3.0.0-SNAPSHOT
+TEZ_VERSION=0.10.0
+TEZ_BRANCH=branch-0.10.0
+HIVE_VERSION=4.0.0-SNAPSHOT
 HIVE_BRANCH=master
-ORC_VERSION=1.4.3
-ORC_BRANCH=master
+ORC_VERSION=1.7.0-SNAPSHOT
+ORC_BRANCH=main
 GUAVA_VERSION=19.0
-MAVEN_VERSION=3.2.5
+MAVEN_VERSION=3.8.1
 HDFS=$(shell id hdfs 2> /dev/null)
 # try to build against local hadoop always
 ifneq ($(HADOOP),)
   HADOOP_VERSION=$(shell hadoop version | grep "^Hadoop" | cut -f 2 -d' ')
 else
-  HADOOP_VERSION=2.8.0-SNAPSHOT
+  HADOOP_VERSION=3.1.4
 endif
 APP_PATH:=$(shell echo /user/$$USER/apps/llap-`date +%Y-%b-%d`/)
 HISTORY_PATH:=$(shell echo /user/$$USER/tez-history/build=`date +%Y-%b-%d`/)
@@ -63,7 +63,7 @@ ifneq ($(APT),)
 endif
 
 maven: 
-	$(OFFLINE) || wget -c https://www.us.apache.org/dist/maven/maven-3/$(MAVEN_VERSION)/binaries/apache-maven-$(MAVEN_VERSION)-bin.tar.gz
+	$(OFFLINE) || wget -c https://downloads.apache.org/maven/maven-3/$(MAVEN_VERSION)/binaries/apache-maven-$(MAVEN_VERSION)-bin.tar.gz
 	-- mkdir -p $(INSTALL_ROOT)/maven/
 	tar -C $(INSTALL_ROOT)/maven/ --strip-components=1 -xzvf apache-maven-$(MAVEN_VERSION)-bin.tar.gz
 	-- sed -i~ -e "/<profiles>/r vendor-repos.xml" $(INSTALL_ROOT)/maven/conf/settings.xml  
@@ -87,7 +87,7 @@ clean-protobuf:
 	rm -rf protobuf-2.5.0/
 
 mysql: 
-	$(OFFLINE) || wget -c https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar
+	$(OFFLINE) || wget -c https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.25/mysql-connector-java-8.0.25-sources.jar
 
 tez: git maven protobuf
 	test -d tez || git clone --branch $(TEZ_BRANCH) https://git-wip-us.apache.org/repos/asf/tez.git tez
