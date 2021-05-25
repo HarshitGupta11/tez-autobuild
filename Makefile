@@ -16,7 +16,6 @@ ORC_BRANCH=main
 GUAVA_VERSION=19.0
 MAVEN_VERSION=3.8.1
 HDFS=$(shell id hdfs 2> /dev/null)
-export JAVA_HOME="$(jrunscript -e 'java.lang.System.out.println(java.lang.System.getProperty("java.home"));')"
 # try to build against local hadoop always
 ifneq ($(HADOOP),)
   HADOOP_VERSION=$(shell hadoop version | grep "^Hadoop" | cut -f 2 -d' ')
@@ -62,6 +61,8 @@ endif
 ifneq ($(APT),)
 	which $(TOOLS) || apt-get install -y git gcc g++ python man cmake zlib1g-dev libssl-dev openjdk-8-jdk
 endif
+
+export JAVA_HOME="$(jrunscript -e 'java.lang.System.out.println(java.lang.System.getProperty("java.home"));')"
 
 maven: 
 	$(OFFLINE) || wget -c https://downloads.apache.org/maven/maven-3/$(MAVEN_VERSION)/binaries/apache-maven-$(MAVEN_VERSION)-bin.tar.gz
