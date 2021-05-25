@@ -62,7 +62,7 @@ ifneq ($(APT),)
 	which $(TOOLS) || apt-get install -y git gcc g++ python man cmake zlib1g-dev libssl-dev openjdk-8-jdk
 endif
 
-export JAVA_HOME="$(jrunscript -e 'java.lang.System.out.println(java.lang.System.getProperty("java.home"));')"
+export JAVA_HOME= `update-alternatives --list java`
 
 maven: 
 	$(OFFLINE) || wget -c https://downloads.apache.org/maven/maven-3/$(MAVEN_VERSION)/binaries/apache-maven-$(MAVEN_VERSION)-bin.tar.gz
