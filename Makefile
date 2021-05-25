@@ -62,7 +62,7 @@ ifneq ($(APT),)
 	which $(TOOLS) || apt-get install -y git gcc g++ python man cmake zlib1g-dev libssl-dev openjdk-8-jdk
 endif
 
-export JAVA_HOME=`(dirname $(dirname $(readlink -f $(which javac))))`"/bin"
+#export JAVA_HOME=`(dirname $(dirname $(readlink -f $(which javac))))`"/bin"
 
 maven: 
 	$(OFFLINE) || wget -c https://downloads.apache.org/maven/maven-3/$(MAVEN_VERSION)/binaries/apache-maven-$(MAVEN_VERSION)-bin.tar.gz
@@ -116,7 +116,7 @@ hive: tez-dist.tar.gz
 	fi
 	export PATH=$(INSTALL_ROOT)/protoc/bin:$(INSTALL_ROOT)/maven/bin/:$(INSTALL_ROOT)/ant/bin:$$PATH; \
 	cd hive/; . /etc/profile; \
-	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdir -Pdist -Phadoop-2 -Dhadoop.version=$(HADOOP_VERSION) -Dhadoop-0.23.version=$(HADOOP_VERSION) -Dmaven.javadoc.skip=true -Dbuild.profile=nohcat -Dpackaging.minimizeJar=$(MINIMIZE) $$($(OFFLINE) && echo "-o"); 
+	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdir -Pdist -Dhadoop.version=$(HADOOP_VERSION) -Dmaven.javadoc.skip=true -Dpackaging.minimizeJar=$(MINIMIZE) $$($(OFFLINE) && echo "-o"); 
 
 orc-java: git maven protobuf
 	test -d orc || git clone --branch $(ORC_BRANCH) https://github.com/apache/orc.git orc
