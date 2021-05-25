@@ -114,7 +114,7 @@ hive: tez-dist.tar.gz
 	fi
 	export PATH=$(INSTALL_ROOT)/protoc/bin:$(INSTALL_ROOT)/maven/bin/:$(INSTALL_ROOT)/ant/bin:$$PATH; \
 	cd hive/; . /etc/profile; \
-	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdir -Pdist -Phadoop-2 -Dhadoop.version=$(HADOOP_VERSION) -Dhadoop-0.23.version=$(HADOOP_VERSION) -Dmaven.javadoc.skip=true -T 1C -Dbuild.profile=nohcat -Dpackaging.minimizeJar=$(MINIMIZE) $$($(OFFLINE) && echo "-o"); 
+	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdir -Pdist -Phadoop-2 -Dhadoop.version=$(HADOOP_VERSION) -Dhadoop-0.23.version=$(HADOOP_VERSION) -Dmaven.javadoc.skip=true -T -Dbuild.profile=nohcat -Dpackaging.minimizeJar=$(MINIMIZE) $$($(OFFLINE) && echo "-o"); 
 
 clean-hive:
 	rm -rf hive
@@ -124,9 +124,6 @@ orc-java: git maven protobuf
 	export PATH=$(INSTALL_ROOT)/protoc/bin:$(INSTALL_ROOT)/maven/bin/:$$PATH; \
 	cd orc/java; . /etc/profile; \
 	$(MVN2) $(CLEAN) install -DskipTests $$($(OFFLINE) && echo "-o");
-
-clean-orc:
-	rm -rf orc
 
 dist-tez: tez 
 	cp tez/tez-dist/target/tez-$(TEZ_VERSION).tar.gz tez-dist.tar.gz
@@ -224,12 +221,5 @@ install: tez-dist.tar.gz hive-dist.tar.gz
 
 run: 
 	./dist/hive/bin/hive --service llap --instances $(NUM_NODES)
-
-clean-dist:
-	rm -rf $(INSTALL_ROOT)
-
-clean-all: clean clean-tez clean-hive clean-orc clean-protobuf
-
-clean: clean-dist
 
 .PHONY: hive tez protobuf ant maven
