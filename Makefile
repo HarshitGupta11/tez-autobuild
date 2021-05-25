@@ -67,7 +67,7 @@ endif
 maven: 
 	$(OFFLINE) || wget -c https://downloads.apache.org/maven/maven-3/$(MAVEN_VERSION)/binaries/apache-maven-$(MAVEN_VERSION)-bin.tar.gz
 	-- mkdir -p $(INSTALL_ROOT)/maven/
-	tar -C $(INSTALL_ROOT)/maven/ --strip-components=1 -xzvf apache-maven-$(MAVEN_VERSION)-bin.tar.gzs
+	tar -C $(INSTALL_ROOT)/maven/ --strip-components=1 -xzvf apache-maven-$(MAVEN_VERSION)-bin.tar.gz
 
 ant: 
 	$(OFFLINE) || wget -c https://archive.apache.org/dist/ant/binaries/apache-ant-1.9.1-bin.tar.gz
