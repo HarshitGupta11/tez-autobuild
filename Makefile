@@ -19,7 +19,7 @@ HDFS=$(shell id hdfs 2> /dev/null)
 # try to build against local hadoop always
 APP_PATH:=$(shell echo /user/$$USER/apps/llap-`date +%Y-%b-%d`/)
 HISTORY_PATH:=$(shell echo /user/$$USER/tez-history/build=`date +%Y-%b-%d`/)
-INSTALL_ROOT:=$(shell echo $$PWD/dist/)
+INSTALL_ROOT:=$(shell echo $$PWD/dist)
 HIVE_CONF_DIR:=$(shell test -d /etc/hive/conf/conf.server && echo /etc/hive/conf/conf.server || echo /etc/hive/conf/)
 HIVE_CONF_SUDO:=$(shell test -r $(HIVE_CONF_DIR)/hive-site.xml || echo sudo)
 OFFLINE=false
