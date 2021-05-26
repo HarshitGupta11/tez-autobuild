@@ -6,5 +6,5 @@ export PATH=$PATH:`pwd`
 cd ../etc/hadoop
 
 printf "export JAVA_HOME=`dirname $(dirname $(readlink -f $(which javac)))`" >> hadoop_env.sh
-export JAVA_HOME=`dirname $(dirname $(readlink -f $(which javac)))`
+export JAVA_HOME=`dirname $(dirname $(readlink -f $(which javac)))`"/jre"
 cd ../../..
