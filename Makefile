@@ -57,7 +57,7 @@ ifneq ($(APT),)
 	which $(TOOLS) || apt-get install -y git gcc g++ python man cmake zlib1g-dev libssl-dev openjdk-8-jdk wget
 endif
 
-export JAVA_HOME=`dirname $(dirname $(readlink -f $(which javac)))`"/bin"
+#export JAVA_HOME=`dirname $(dirname $(readlink -f $(which javac)))`"/bin"
 
 ifneq ($(HADOOP),)
   HADOOP_VERSION=$(shell hadoop version | grep "^Hadoop" | cut -f 2 -d' ')
