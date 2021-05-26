@@ -13,7 +13,7 @@ HIVE_VERSION=4.0.0-SNAPSHOT
 HIVE_BRANCH=master
 ORC_VERSION=1.6.7
 ORC_BRANCH=main
-GUAVA_VERSION=19.0
+GUAVA_VERSION=27.0
 MAVEN_VERSION=3.8.1
 HDFS=$(shell id hdfs 2> /dev/null)
 # try to build against local hadoop always
