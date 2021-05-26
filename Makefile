@@ -116,7 +116,7 @@ hive: tez-dist.tar.gz
 	fi
 	export PATH=$(INSTALL_ROOT)/protoc/bin:$(INSTALL_ROOT)/maven/bin/:$(INSTALL_ROOT)/ant/bin:$$PATH; \
 	cd hive/; . /etc/profile; \
-	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdist -Dhadoop.version=$(HADOOP_VERSION) -T 1C -Dmaven.javadoc.skip=true $$($(OFFLINE) && echo "-o"); 
+	$(MVN) $(CLEAN) dependency:tree package -e -Denforcer.skip=true -DskipTests=true -Pdist -Dhadoop.version=$(HADOOP_VERSION) -T 1C -Drat.numUnapprovedLicenses=200 -Dmaven.javadoc.skip=true $$($(OFFLINE) && echo "-o"); 
 
 # orc-java: git maven protobuf
 # 	test -d orc || git clone --branch $(ORC_BRANCH) https://github.com/apache/orc.git orc
@@ -222,3 +222,6 @@ run:
 	./dist/hive/bin/hive --service llap --instances $(NUM_NODES)
 
 .PHONY: hive tez protobuf ant maven
+
+
+#update the version of guava in all repos
