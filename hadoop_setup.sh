@@ -1,11 +1,3 @@
-ifneq ($(YUM),)
-	which $(TOOLS) || yum -y install wget
-endif
-ifneq ($(APT),)
-	which $(TOOLS) || sudo apt-get install -y wget
-endif
-
-
 test -d hadoop-3.1.4.tar.gz || wget https://downloads.apache.org/hadoop/common/hadoop-3.1.4/hadoop-3.1.4.tar.gz 
 \ tar -xf hadoop-3.1.4.tar.gz
 
