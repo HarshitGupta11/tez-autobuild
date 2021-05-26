@@ -5,4 +5,6 @@ cd hadoop-3.1.4/bin
 export PATH=$PATH:`pwd`
 cd ../etc/hadoop
 
-printf "export JAVA_HOME=`$(dirname $(dirname $(readlink -f $(which javac))))`" >> hadoop_env.sh
+printf "export JAVA_HOME=`dirname $(dirname $(readlink -f $(which javac)))`" >> hadoop_env.sh
+
+cd ../../..
