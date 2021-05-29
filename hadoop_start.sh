@@ -10,7 +10,7 @@ chmod 750 /app/hadoop/tmp
 test -d /tmp || mkdir -p /tmp
 cp hadoop_setup.sh conf_files/core-site.xml conf_files/mapred-site.xml conf_files/hdfs-site.xml /tmp
 chmod 777 /tmp/hadoop_setup.sh
-su -c "echo -ne \'\n\' | ssh-keygen -t rsa -P \"\" "
+su -c "echo -ne '\n' | ssh-keygen -t rsa -P \"\" "
 su -c "cat ~\/.ssh\/id_rsa.pub >> ~\/.ssh\/authorized_keys"
 service ssh restart
 su -c "./tmp/hadoop_setup.sh" hduser
