@@ -1,7 +1,7 @@
 #this will add the user and copy the  setup script in the tmp directory where it will
 #be picked up hduser to execute
 apt update
-apt install -y wget ssh
+apt install -y wget ssh < inputs_hadoop
 ./install_jdk.sh
 addgroup hadoop
 adduser --ingroup hadoop -p "" hduser

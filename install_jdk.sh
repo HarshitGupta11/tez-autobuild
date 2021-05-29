@@ -6,7 +6,7 @@ fi
 wget https://enos.itcollege.ee/~jpoial/allalaadimised/jdk8/jdk-8u291-linux-x64.tar.gz
 export FILE_NAME="jdk-8u291-linux-x64.tar.gz"
 if [[ ! $FILE_NAME =~ jdk-[0-9]{1}u[0-9]{1,2}.*\.tar\.gz ]]; then
-    echo "'$1' doesn't look like a JDK archive."
+    echo "'$FILE_NAME' doesn't look like a JDK archive."
     echo "The file name should begin 'jdk-XuYY', where X is the version number and YY is the update number."
     echo "Please re-name the file, or download the JDK again and keep the default file name."
     exit 2
@@ -14,7 +14,7 @@ fi
 
 # Unpack the JDK, and get the name of the unpacked folder
 tar -xf $FILE_NAME
-JDK_VER=`echo $1 | sed -r 's/jdk-([0-9]{1}u[0-9]{1,2}).*\.tar\.gz/\1/g'`
+JDK_VER=`echo $FILE_NAME | sed -r 's/jdk-([0-9]{1}u[0-9]{1,2}).*\.tar\.gz/\1/g'`
 JDK_NAME=`echo $JDK_VER | sed -r 's/([0-9]{1})u([0-9]{1,2})/jdk1.\1.0_\2/g'`
 
 # Create a location to save the JDK, and move it there
