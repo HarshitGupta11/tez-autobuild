@@ -1,7 +1,7 @@
 #this will add the user and copy the  setup script in the tmp directory where it will
 #be picked up hduser to execute
 apt update
-apt install -y apt-get install -y gcc g++ python man cmake zlib1g-dev libssl-dev openjdk-8-jdk wget ssh make
+apt install -y gcc g++ python man cmake zlib1g-dev libssl-dev openjdk-8-jdk wget ssh make
 addgroup hadoop
 adduser --ingroup hadoop hduser
 mkdir -p /app/hadoop/tmp
