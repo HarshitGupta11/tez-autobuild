@@ -19,4 +19,3 @@ export HDFS_SECONDARYNAMENODE_USER="hduser"
 export YARN_RESOURCEMANAGER_USER="hduser"
 export YARN_NODEMANAGER_USER="hduser"
 ./hadoop/sbin/start-all.sh
-#1 2 2 4 5 17
