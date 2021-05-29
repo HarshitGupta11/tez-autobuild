@@ -1,4 +1,3 @@
-
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
@@ -867,13 +866,6 @@
   uri's scheme determines the config property (fs.SCHEME.impl) naming
   the FileSystem implementation class.  The uri's authority is used to
   determine the host, port, etc. for a filesystem.</description>
-</property>
-
-<property>
-  <name>fs.default.name</name>
-  <value>file:///</value>
-  <description>Deprecated. Use (fs.defaultFS) property
-  instead</description>
 </property>
 
 <property>
