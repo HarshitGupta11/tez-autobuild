@@ -7,7 +7,7 @@ cd hadoop/bin
 export PATH=`pwd`:$PATH
 cd ../etc/hadoop
 echo "export JAVA_HOME=`dirname $(dirname $(readlink -f $(which javac)))`" >> hadoop-env.sh
-mv /tmp/core-site.xml /tmp/mapred-site.xml /tmp/hdfs-site.xml .
+cp /tmp/core-site.xml /tmp/mapred-site.xml /tmp/hdfs-site.xml /tmp/yarn-site.xml .
 cd ../../..
 export JAVA_HOME=`dirname $(dirname $(readlink -f $(which javac)))`
 hadoop namenode -format
