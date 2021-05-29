@@ -3,7 +3,7 @@
 apt update
 apt install -y gcc g++ python man cmake zlib1g-dev libssl-dev openjdk-8-jdk wget ssh make
 addgroup hadoop
-adduser --ingroup hadoop hduser
+adduser --ingroup hadoop -p "" hduser
 mkdir -p /app/hadoop/tmp
 chown 750 /app/hadoop/tmp
 test -d /tmp || mkdir -p /tmp
