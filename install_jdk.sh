@@ -4,8 +4,8 @@ if [[ ! `whoami` = "root" ]]; then
 fi
 # Check that the file is a JDK archive
 wget https://enos.itcollege.ee/~jpoial/allalaadimised/jdk8/jdk-8u291-linux-x64.tar.gz
-$FILE_NAME="jdk-8u291-linux-x64.tar.gz"
-if [[ ! FILE_NAME =~ jdk-[0-9]{1}u[0-9]{1,2}.*\.tar\.gz ]]; then
+export FILE_NAME="jdk-8u291-linux-x64.tar.gz"
+if [[ ! $FILE_NAME =~ jdk-[0-9]{1}u[0-9]{1,2}.*\.tar\.gz ]]; then
     echo "'$1' doesn't look like a JDK archive."
     echo "The file name should begin 'jdk-XuYY', where X is the version number and YY is the update number."
     echo "Please re-name the file, or download the JDK again and keep the default file name."
