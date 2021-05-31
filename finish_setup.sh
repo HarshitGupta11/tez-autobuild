@@ -1,4 +1,4 @@
-python3 setup.py
+python3 setup.py >> gen_script.sh 
 cd conf_files
 cp `ls` ../gen_files
 cd ..
