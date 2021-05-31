@@ -9,7 +9,6 @@ chown hduser /app/hadoop/tmp
 chmod 750 /app/hadoop/tmp
 chown hduser /home/hduser
 test -d /tmp || mkdir -p /tmp
-cp hadoop_setup.sh conf_files/core-site.xml conf_files/mapred-site.xml conf_files/hdfs-site.xml /tmp
 chmod 777 /tmp/hadoop_setup.sh
 su -c "echo -ne '\n' | ssh-keygen -t rsa -P \"\" "  hduser
 su -c "cat \/home\/hduser\/.ssh\/id_rsa.pub >> \/home\/hduser\/.ssh\/authorized_keys" hduser

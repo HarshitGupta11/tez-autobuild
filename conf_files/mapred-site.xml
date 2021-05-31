@@ -19,7 +19,7 @@
 <configuration>
   <property>
     <name>mapred.job.tracker</name>
-    <value>localhost:54311</value>
+    <value>master:54311</value>
     <description>The host and port that the MapReduce job tracker runs
     at.  If "local", then jobs are run in-process as a single map
     and reduce task.
@@ -27,7 +27,7 @@
   </property>
   <property>
   <name>mapreduce.tasktracker.http.address</name>
-  <value>localhost:50060</value>
+  <value>master:50060</value>
   <description>
     The task tracker http server address and port.
     If the port is 0 then the server will start on a free port.
@@ -35,17 +35,17 @@
 </property>
 <property>
   <name>mapreduce.jobhistory.address</name>
-  <value>localhost:10020</value>
+  <value>master:10020</value>
   <description>MapReduce JobHistory Server IPC host:port</description>
 </property>
 <property>
   <name>mapreduce.jobhistory.webapp.address</name>
-  <value>localhost:19888</value>
+  <value>master:19888</value>
   <description>MapReduce JobHistory Server Web UI host:port</description>
 </property>
 <property>
   <name>mapreduce.jobhistory.admin.address</name>
-  <value>localhost:10033</value>
+  <value>master:10033</value>
   <description>The address of the History server admin interface.</description>
 </property>
 </configuration>

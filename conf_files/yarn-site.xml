@@ -50,7 +50,7 @@
   <property>
     <description>The hostname of the RM.</description>
     <name>yarn.resourcemanager.hostname</name>
-    <value>localhost</value>
+    <value>master</value>
   </property>
 
   <property>
@@ -64,7 +64,7 @@
       The actual address the server will bind to. If this optional address is
       set, the RPC and webapp servers will bind to this address and the port specified in
       yarn.resourcemanager.address and yarn.resourcemanager.webapp.address, respectively. This
-      is most useful for making RM listen to all interfaces by setting to localhost.
+      is most useful for making RM listen to all interfaces by setting to master.
     </description>
     <name>yarn.resourcemanager.bind-host</name>
     <value></value>
@@ -454,7 +454,7 @@
     as the value for yarn.resourcemanager.store.class</description>
     <name>yarn.resourcemanager.fs.state-store.uri</name>
     <value>${hadoop.tmp.dir}/yarn/system/rmstore</value>
-    <!--value>hdfs://localhost:9000/rmstore</value-->
+    <!--value>hdfs://master:9000/rmstore</value-->
   </property>
 
   <property>
@@ -726,7 +726,7 @@
   <property>
     <description>The hostname of the NM.</description>
     <name>yarn.nodemanager.hostname</name>
-    <value>localhost</value>
+    <value>master</value>
   </property>
 
   <property>
@@ -740,7 +740,7 @@
       The actual address the server will bind to. If this optional address is
       set, the RPC and webapp servers will bind to this address and the port specified in
       yarn.nodemanager.address and yarn.nodemanager.webapp.address, respectively. This is
-      most useful for making NM listen to all interfaces by setting to localhost.
+      most useful for making NM listen to all interfaces by setting to master.
     </description>
     <name>yarn.nodemanager.bind-host</name>
     <value></value>
@@ -1349,7 +1349,7 @@
   <property>
     <description>The hostname of the timeline service web application.</description>
     <name>yarn.timeline-service.hostname</name>
-    <value>localhost</value>
+    <value>master</value>
   </property>
 
   <property>
@@ -1377,7 +1377,7 @@
       set, the RPC and webapp servers will bind to this address and the port specified in
       yarn.timeline-service.address and yarn.timeline-service.webapp.address, respectively.
       This is most useful for making the service listen to all interfaces by setting to
-      localhost.
+      master.
     </description>
     <name>yarn.timeline-service.bind-host</name>
     <value></value>
@@ -1585,7 +1585,7 @@
   <property>
     <description>The address of the admin interface in the SCM (shared cache manager)</description>
     <name>yarn.sharedcache.admin.address</name>
-    <value>localhost:8047</value>
+    <value>master:8047</value>
   </property>
 
   <property>
@@ -1597,7 +1597,7 @@
   <property>
     <description>The address of the web application in the SCM (shared cache manager)</description>
     <name>yarn.sharedcache.webapp.address</name>
-    <value>localhost:8788</value>
+    <value>master:8788</value>
   </property>
 
   <property>
@@ -1625,7 +1625,7 @@
     <description>The address of the node manager interface in the SCM
     (shared cache manager)</description>
     <name>yarn.sharedcache.uploader.server.address</name>
-    <value>localhost:8046</value>
+    <value>master:8046</value>
   </property>
 
   <property>
@@ -1639,7 +1639,7 @@
     <description>The address of the client interface in the SCM
     (shared cache manager)</description>
     <name>yarn.sharedcache.client-server.address</name>
-    <value>localhost:8045</value>
+    <value>master:8045</value>
   </property>
 
   <property>

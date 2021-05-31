@@ -96,7 +96,7 @@
     the setting can be used to affect the _HOST substitution in the service
     Kerberos principal. If this configuration value is not set, the service
     will use its default hostname as returned by
-    InetAddress.getLocalHost().getCanonicalHostName().
+    InetAddress.getmaster().getCanonicalHostName().
 
     Most clusters will not require this setting.
   </description>
@@ -860,7 +860,7 @@
 
 <property>
   <name>fs.defaultFS</name>
-  <value>hdfs://localhost:54310</value>
+  <value>hdfs://master:54310</value>
   <description>The name of the default file system.  A URI whose
   scheme and authority determine the FileSystem implementation.  The
   uri's scheme determines the config property (fs.SCHEME.impl) naming
@@ -2739,7 +2739,7 @@
 
 <property>
   <name>hadoop.http.authentication.kerberos.principal</name>
-  <value>HTTP/_HOST@LOCALHOST</value>
+  <value>HTTP/_HOST@master</value>
   <description>
     Indicates the Kerberos principal to be used for HTTP endpoint.
     The principal MUST start with 'HTTP/' as per Kerberos HTTP SPNEGO specification.
@@ -2928,7 +2928,7 @@
   <value>DEFAULT</value>
   <description>
     The hostname verifier to provide for HttpsURLConnections.
-    Valid values are: DEFAULT, STRICT, STRICT_IE6, DEFAULT_AND_LOCALHOST and
+    Valid values are: DEFAULT, STRICT, STRICT_IE6, DEFAULT_AND_master and
     ALLOW_ALL
   </description>
 </property>
@@ -3418,7 +3418,7 @@
 
   <property>
     <name>hadoop.registry.zk.quorum</name>
-    <value>localhost:2181</value>
+    <value>master:2181</value>
     <description>
       List of hostname:port pairs defining the
       zookeeper quorum binding for the registry
@@ -3616,7 +3616,7 @@
     <name>fs.adl.oauth2.msi.port</name>
     <value></value>
     <description>
-      The localhost port for the MSI token service. This is the port specified
+      The master port for the MSI token service. This is the port specified
       when creating the Azure VM. The default, if this setting is not specified,
       is 50342.
       Used by MSI token provider.

@@ -1,0 +1,39 @@
+The setup scripts will be written in python :)
+
+Staging Prep:
+create a docker netowrk and create an IP/Space
+Create the IP addresses of the docker containers
+setup the conf-site.xml files(yarn-site.xml, mapred-site.xml, core-site.xnl, hdfs-site.xml)
+Create a hosts config file for the container
+Create a consistent file that will export conf params to the shell
+the name of the hadoop user will be hduser
+
+Copy the hosts config file in the server and restart the ssh service
+Create a hdfs user in each of the containers
+copy the id from each of the hosts to the other set of hosts***
+copy the conf-site.xml files
+
+
+Side Note:
+The container should keep running after being started figure out how to do that
+***Push the details in the setup script that needs to be executed in each container.
+  Create a tar file for all the config files:
+  For each Container Do:
+    Copy the files in the docker container directory(start-script, setup script, variable defining script, conf_files,master and slave file)
+    Change permission on the files if necessary
+    Use docker exec to start the start script
+
+
+Scripts That will be produced:
+hadoop_start.sh(start the process in the root user)
+ssh_cluster.sh(setup the ssh nodes)
+hadoop_setup.sh(setup hadoop under the username)(for master and slave respectively)
+
+
+Workflow:
+Gen the required scripts firsts
+Download the hadoop distribution as well
+Start all the containers
+for each container:
+  first setup the etc/hosts file and restart the service ("cat /tmp/gen_files/host_config >> /etc/hosts/;service ssh restart")
+  
