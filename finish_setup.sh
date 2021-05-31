@@ -1,3 +1,4 @@
+python3 setup.py
 cd conf_files
 cp `ls` ../gen_files
 cd ..
@@ -17,7 +18,7 @@ cp hadoop_setup_master.sh gen_files
 chmod 755 hadoop_start_master.sh
 cp hadoop_start_master.sh gen_files
 
-chmod 755 gen_ssh.sh 
+chmod 755 gen_ssh.sh
 
 #execute the gen script
 chmod 777 gen_script.sh
