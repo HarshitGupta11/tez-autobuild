@@ -31,10 +31,10 @@ with open("gen_files/gen_ssh.sh", "w") as file:
     file.write(ssh_cmd_t)
     file.write("\n")
     for i in range(n):
-        file.write(ssh_cmd.format(ips[i]))
+        file.write(ssh_cmd.format(ls[i]))
         file.write("\n")
 
-run_cmd = "sudo docker run --network {} --ip {} --name {} base:v2"
+run_cmd = "sudo docker run --network {} --ip {} -m \"4g\" --cpus=\"1\" --storage-opt size=10G --name {} base:v2"
 for i in range(n):
     print(run_cmd.format(docker_net, ips[i], ls[i]))
 
@@ -43,6 +43,15 @@ for i in range(n):
     print(run_cmd.format(ls[i]))
 
 #gen the docker execs to configure etc hosts and restart ssh
-cmd = "sudo docker exec -it /bin/bash -c \"cat /tmp/gen_files/conf_hosts >> /etc/hosts ; service ssh restart \" {}"
+cmd = "sudo docker exec -it {} /bin/bash -c \"cat /tmp/gen_files/conf_hosts >> /etc/hosts ; service ssh restart \" "
 for i in range(n):
     print(cmd.format(ls[i]))
+
+#exceute the services on
+ls = ls[::-1]
+cmd = "sudo docker exec -it {} /bin/bash -c \". /tmp/gen_files/hadoop_start{}.sh\""
+for i in range(n):
+    if "master" in ls[i]:
+        print(cmd.format(ls[i], "_master", "_master", "_master"))
+    else:
+        print(cmd.format(ls[i], "", "", ""))

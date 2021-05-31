@@ -10,4 +10,4 @@ chmod 750 /app/hadoop/tmp
 chown hduser /home/hduser
 test -d /tmp || mkdir -p /tmp
 chmod 777 /tmp/gen_files/hadoop_setup.sh
-su -c ". /tmp/gen_files/hadoop_setup.sh" hduser
+su -c ". /tmp/gen_files/hadoop_setup_master.sh" hduser
