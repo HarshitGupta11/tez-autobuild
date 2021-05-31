@@ -4,7 +4,7 @@ import os
 if "gen_files" not in os.listdir():
     os.mkdir("gen_files")
 
-n = 3
+n = 2
 docker_net = "my_net"
 
 sl = "slave_{}"
